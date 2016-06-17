@@ -6,8 +6,8 @@ public abstract class Obstacle_Base : MonoBehaviour {
     #region Public attributes
     public float Speed;
     public abstract Vector2 Position { get; set; }
-    public Player_State PS;
-
+    public bool is_PlayerDead = false;
+    public GameManager GM;
     #endregion
 
     #region non Public attributes
@@ -21,7 +21,7 @@ public abstract class Obstacle_Base : MonoBehaviour {
     // Use this for initialization
     protected virtual void Awake()
     {
-        PS = GetComponent<Bird_Base>().PS;
+        
     }
 
     // Update is called once per frame

@@ -54,7 +54,7 @@ public class Peaple_Donut : Peaple_Base
 
         _boxColli2D = GetComponent<BoxCollider2D>();
         _rigid2D = GetComponent<Rigidbody2D>();
-        
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         Point = 2;
     }
@@ -88,8 +88,11 @@ public class Peaple_Donut : Peaple_Base
         }
         else if (other.CompareTag("Player") && is_alive)
         {
-            PS = Player_State.isdead;
-            Destroy(other.gameObject);
+            
+            is_PlayerDead = true;
+            other.gameObject.SetActive(false);
+            GM.GS = GameState.End;
+            //Destroy(other.gameObject);
         }
         
         
@@ -112,6 +115,7 @@ public class Peaple_Donut : Peaple_Base
         _rigid2D.mass = 1f;                                                     // ─┘
 
         Debug.Log("What? oh..MY..");
+        GM.GetCoin(Point);
     }
 
     public override void Idle()

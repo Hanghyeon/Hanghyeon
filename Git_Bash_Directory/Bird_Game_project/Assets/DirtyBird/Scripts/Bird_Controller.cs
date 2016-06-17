@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class Bird_Controller : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class Bird_Controller : MonoBehaviour
     #region public attributes
 
     public static Bird_Controller Singleton;
-    
+    public GameManager GM;
     #endregion
 
     #region non public attributes
@@ -25,19 +26,20 @@ public class Bird_Controller : MonoBehaviour
 
         var allBirds = GameObject.FindObjectsOfType<Bird_Base>();
         _bird = allBirds[0];
-        
+
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Use this for initialization
     void Start ()
     {
+        
         _OnDidInput += Movement;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
         if(GetInputAction())
             CheckBoundaries();
     }
@@ -74,7 +76,7 @@ public class Bird_Controller : MonoBehaviour
 
     bool GetInputAction()
     {
-        if (Input.anyKey)
+        if (Input.anyKey&&GM.GS==GameState.Play)
         {
             float y = Input.GetAxisRaw("Vertical");
             float x = Input.GetAxisRaw("Horizontal");

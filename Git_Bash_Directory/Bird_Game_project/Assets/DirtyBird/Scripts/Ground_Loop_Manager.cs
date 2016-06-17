@@ -32,7 +32,7 @@ public class Ground_Loop_Manager : MonoBehaviour {
         Ground_Second.transform.Translate(Vector3.left * Speed * Time.deltaTime, Space.Self);
         
 
-        if(Ground_Now.transform.position.x<= -167f)
+        if(Ground_Now.transform.position.x<= -178.4f)
         {
             DestroyGround();
         }
@@ -44,7 +44,7 @@ public class Ground_Loop_Manager : MonoBehaviour {
         var SecondPos = Ground_Second.transform;
         Ground_Now = Ground_Second;
         int type = Random.Range(0, Grounds.Length);
-        Ground_Second =Instantiate(Grounds[type], new Vector2(189f, 2.6f), Quaternion.identity) as GameObject;
+        Ground_Second =Instantiate(Grounds[type], new Vector2(178.3f, 3.1f), Quaternion.identity) as GameObject;
         Ground_Second.transform.parent = transform;
     }
 

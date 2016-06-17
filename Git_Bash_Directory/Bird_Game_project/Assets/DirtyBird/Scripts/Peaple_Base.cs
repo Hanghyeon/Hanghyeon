@@ -16,8 +16,8 @@ public abstract class Peaple_Base : MonoBehaviour {
     public int Point;
     public Peaple_State Statement;
     public abstract Vector2 Position { get; set; }
-    public Player_State PS;
-
+    public bool is_PlayerDead = false;
+    public GameManager GM;
     #endregion
 
     #region non Public attributes
@@ -27,7 +27,10 @@ public abstract class Peaple_Base : MonoBehaviour {
 
     #region Unity CallBacks
 
-    protected virtual void Awake() { PS = GetComponent<Bird_Base>().PS; }
+    protected virtual void Awake()
+    {
+        
+    }
 
     // Use this for initialization
     //protected virtual void Start () {}

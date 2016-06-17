@@ -36,7 +36,7 @@ public class Obstacle_tree : Obstacle_Base {
     {
         _rigid2D = GetComponent<Rigidbody2D>();
         _boxCollid2D = GetComponent<BoxCollider2D>();
-
+        GM = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -54,8 +54,10 @@ public class Obstacle_tree : Obstacle_Base {
         }
         else if (other.transform.tag == "Player")
         {
-            PS = Player_State.isdead;
-            Destroy(other.gameObject);
+            is_PlayerDead = true;
+            other.gameObject.SetActive(false);
+            GM.GS = GameState.End;
+            //Destroy(other.gameObject);
         }
     }
     
